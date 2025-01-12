@@ -73,7 +73,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             // Generate a Sanctum token for the user
-            $token = $user->createToken('auth_token')->plainTextToken;
+            $token = $user->createToken('token')->plainTextToken;
 
             // Return a successful response with the token
             return response()->json([
