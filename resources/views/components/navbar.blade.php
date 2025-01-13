@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <div class="container-fluid container py-12 mx-auto flex flex-wrap md:flex-nowrap items-center justify-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container-fluid container mx-auto flex flex-wrap md:flex-nowrap items-center justify-between">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full me-2" viewBox="0 0 24 24">
