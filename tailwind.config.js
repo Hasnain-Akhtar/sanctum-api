@@ -18,3 +18,15 @@ export default {
     },
     plugins: [],
 };
+
+
+module.exports = {
+    content: ['./resources/views/**/*.blade.php'],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    prefix: 'tw-', // Add this line to prefix Tailwind classes
+};
+
+  
