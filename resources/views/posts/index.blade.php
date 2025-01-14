@@ -31,30 +31,35 @@
 @endpush
 
 @section('content')
-<div class="container py-12 mx-auto flex flex-wrap md:flex-nowrap items-center justify-between">
-    <div class="d-flex justify-content-between align-items-center">
-    <h1 style="font-size: 2rem; font-weight: bold;">All Posts</h1>
-</div>
-<div class="d-flex justify-content-start">
-    <a href="/posts/createpost" class="btn btn-success mt-3">Create New Post</a>
-</div>
-<div class="text-center">
-    <a href="/login" class="btn btn-danger">Logout</a>
-</div>
 
+@include('posts.googlebanner')
+@include('posts.live-videos')
+<div class="container mx-auto flex flex-wrap md:flex-nowrap items-center justify-between">
+    {{-- <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <h1 class="text-3xl font-extrabold text-gray-800  md:mb-0">All Posts</h1>
+  
+    </div> --}}
+    
+    
+
+
+ 
     <!-- Loading State with Shimmer Effect -->
     <div id="loadingContent" class="shimmer-container">
         <div class="shimmer-text w-32 h-6 mb-4"></div> <!-- Shimmering text -->
         <div class="shimmer-text w-40 h-6 mb-4"></div> <!-- Shimmering text -->
         <div class="shimmer-img w-full h-64 mb-4"></div> <!-- Shimmering image -->
     </div>
-
+  
     <!-- Actual Content -->
     <div id="actualContent" class="hidden">
         <div id="postsContainer">
             <!-- Dynamic posts will be loaded here -->
         </div>
     </div>
+
+    @include('posts.editor_quotes')
+
 </div>
 @endsection
 
@@ -160,131 +165,81 @@
       <div class="pt-8 bg-white py-8 px-4">
         <h3 class="text-xl font-medium text-gray-900 mb-4">More Posts</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 gap-4">
     `;
     posts.slice(3, 9).forEach(post => {
       postsHTML += `
-        <div class="relative py-3 px-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out transform max-h-[280px]">
-          <div class="flex justify-between gap-x-4">
-            <div class="flex min-w-0 gap-x-3">
-              <img alt="" src="/uploads/${post.image}" class="size-12 flex-none rounded-full bg-gray-50 w-10 h-10 object-cover" />
-              <div class="min-w-0 flex-auto">
-                <p class="text-sm font-semibold text-gray-900">${post.title}</p>
-                <p class="mt-1 truncate text-xs text-gray-500">${post.description}</p>
-                <div class="flex flex-wrap mt-3">
-                  <button class="text-indigo-500 inline-flex items-center mr-3 hover:text-indigo-600" onclick="viewPost('${post.id}')">Learn More
-                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
-                  <button class="text-yellow-500 inline-flex items-center mr-3 hover:text-yellow-600" onclick="updatePost('${post.id}')">Update</button>
-                  <button class="text-red-500 inline-flex items-center hover:text-red-600" onclick="deletePost('${post.id}')">Delete</button>
+            <div class="relative py-3 px-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out transform max-h-[280px]">
+              <div class="flex justify-between gap-x-4">
+                <div class="flex min-w-0 gap-x-3">
+                  <img alt="" src="/uploads/${post.image}" class="size-12 flex-none rounded-full bg-gray-50 w-10 h-10 object-cover" />
+                  <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold text-gray-900">${post.title}</p>
+                    <p class="mt-1 truncate text-xs text-gray-500">${post.description}</p>
+                    <div class="flex flex-wrap mt-3">
+                      <button class="text-indigo-500 inline-flex items-center mr-3 hover:text-indigo-600" onclick="viewPost('${post.id}')">Learn More
+                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="M12 5l7 7-7 7"></path>
+                        </svg>
+                      </button>
+                      <button class="text-yellow-500 inline-flex items-center mr-3 hover:text-yellow-600" onclick="updatePost('${post.id}')">Update</button>
+                      <button class="text-red-500 inline-flex items-center hover:text-red-600" onclick="deletePost('${post.id}')">Delete</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       `;
     });
-    postsHTML += `</div></div>`;
+    postsHTML += `
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            @include('posts.google-ad')
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   // Apply special style for the 10th image
   if (posts.length > 9) {
   const post = posts[9];
   postsHTML += `
-    <!-- Section for Videos -->
-    <section class="text-gray-600 body-font bg-black border-white border-2 rounded-lg shadow-lg w-full ">
-      <div class="container py-16 mx-auto px-6">
-        <h2 class="text-3xl font-semibold text-white mb-8 text-center">Live Videos</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
-          <!-- Main YouTube Video -->
-          <div class="col-span-2">
-            <iframe class="w-full h-96 rounded-lg shadow-lg" src="https://www.youtube.com/embed/WhYrPMVgqxk?si=B_ck2yTIkRJTSos9" frameborder="0" allowfullscreen></iframe>
-            <div class="flex items-center mt-3">
-              <img src="https://s.gravatar.com/avatar/0cf15665a9146ba8595f04293fb0f98f?s=80" alt="Author Image" class="w-8 h-8 rounded-full mr-4" />
-              <div class="flex-auto">
-                <p class="text-sm font-semibold text-white">By <span class="font-normal">John Doe</span></p>
-                <p class="mt-1 max-w-xs text-xs text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="#" class="text-yellow-500 inline-flex items-center mt-2 hover:text-yellow-600">
-                  Read More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- Additional Videos -->
-          <div class="col-span-1 flex flex-col gap-4">
-            <div class="rounded-lg shadow-lg overflow-hidden">
-              <iframe class="w-full h-44" src="https://www.youtube.com/embed/WhYrPMVgqxk?si=B_ck2yTIkRJTSos9" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="rounded-lg shadow-lg overflow-hidden">
-              <iframe class="w-full h-44" src="https://www.youtube.com/embed/WhYrPMVgqxk?si=B_ck2yTIkRJTSos9" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-<section class="text-gray-600 body-font bg-gradient-to-r from-gray-800 via-gray-900 to-black border-white border-2 rounded-lg shadow-xl mt-12 transform hover:scale-105 transition duration-500 ease-in-out">
-  <div class="container py-16 mx-auto">
-    <h2 class="text-3xl font-semibold text-white mb-8 text-center uppercase tracking-wider">Spotlight Post</h2>
-    <div class="lg:w-4/6 mx-auto">
-      <!-- Auto-Moving Image Carousel -->
-      <div class="relative overflow-hidden rounded-lg mb-6">
-        <div class="flex w-max animate-scroll space-x-4">
-          <img alt="Post Image" class="object-cover object-center h-72 w-96 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out" src="/uploads/${post.image}">
-          <img alt="Post Image 2" class="object-cover object-center h-72 w-96 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out" src="/uploads/${post.image}">
-          <img alt="Post Image 3" class="object-cover object-center h-72 w-96 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out" src="/uploads/${post.image}">
-          <img alt="Post Image 4" class="object-cover object-center h-72 w-96 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out" src="/uploads/${post.image}">
-          <img alt="Post Image 5" class="object-cover object-center h-72 w-96 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out" src="/uploads/${post.image}">
-        </div>
-      </div>
-      
-      <!-- Post Details -->
-      <div class="flex flex-col sm:flex-row items-center border-white border-2 rounded-lg shadow-xl p-8 bg-gradient-to-r from-gray-800 via-gray-900 to-black transform hover:scale-105 transition duration-500 ease-in-out">
-        <!-- Author Avatar -->
-        <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-          <div class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400 shadow-lg">
-            <img src="https://dummyimage.com/100x100" class="w-full h-full rounded-full" alt="Author">
-          </div>
-          <h3 class="text-lg text-white font-medium mt-4">${post.author || 'Author Name'}</h3>
-          <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-        </div>
-        
-        <!-- Post Description -->
-        <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-white">
-          <p class="leading-relaxed text-lg text-gray-300 mb-4">${post.description}</p>
-          <a class="text-indigo-500 inline-flex items-center font-medium hover:text-indigo-400 transition duration-300 ease-in-out" onclick="viewPost('${post.id}')">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+@include('posts.spotlight-posts')
 
 
-    <style>
-      /* Scrolling Animation */
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
+<style>
+  /* Scrolling Animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
-      .animate-scroll {
-        animation: scroll 20s linear infinite;
-      }
-    </style>
+  .animate-scroll {
+    animation: scroll 45s linear infinite;
+  }
+
+  .paused {
+    animation-play-state: paused;
+  }
+
+  /* Apply zoom effect only on images and description */
+  .group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+  }
+
+  .zoom-in {
+    transform: scale(1.1);
+  }
+</style>
+
+
   `;
 }
 
@@ -327,5 +282,7 @@
 
     fetchPosts(); // Fetch posts on page load
   });
-</script>
+
+  </script>
+  
 @endpush

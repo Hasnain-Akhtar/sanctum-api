@@ -39,3 +39,12 @@ Route::get('/posts/updatepost', function () {
     return view('posts.updatepost');
 })->name('posts.updatepost');
 
+
+Route::get('/posts/editor_quotes', function () {
+    return view('posts.editor_quotes');
+})->name('posts.editor_quotes');
+
+Route::get('/posts/live-videos', function () {
+    return view('posts.live-videos');
+})->name('posts.live-videos');
+

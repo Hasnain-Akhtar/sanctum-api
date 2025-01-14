@@ -2,7 +2,7 @@
 
 @section('title', 'Contact-Us')
 @section('content')
-    <section class="text-gray-600 body-font relative">
+    <section class="text-gray-600 body-font relative mt-4 mb-4">
         <!-- Map Container with lower z-index -->
         <div class="map-container absolute inset-0 z-0 w-full h-full px-5 overflow-hidden rounded-lg">
             <iframe title="map" src="https://maps.google.com/maps?width=800&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" class="w-full h-full border-0 shimmer-img" style="border-radius: 20px;"></iframe>
@@ -66,3 +66,4 @@
         }
     }
 </style>
+
