@@ -148,5 +148,13 @@ class PostController extends BaseController
 
         return $this->sendResponse([], 'Post deleted successfully');
     }
+
+    public function indexForUsers()
+    {
+        // Get all posts created by admin
+        $data = Post::all();
+
+        return $this->sendResponse($data, 'All posts fetched successfully');
+    }
 }
 
