@@ -11,6 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @stack('styles') <!-- Additional styles -->
 
@@ -43,7 +46,7 @@
 <body>
     <div>
         <!-- Navigation Bar -->
-        @include('components.navbar')
+        @include('user.components.navbar')
 
         <!-- Main Content -->
         <main>
@@ -51,7 +54,7 @@
         </main>
 
         <!-- Footer -->
-        @include('components.footer')
+        @include('user.components.footer')
     </div>
 
     <!-- Bootstrap JS -->

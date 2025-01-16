@@ -18,6 +18,10 @@ Route::get('/allposts', function () {
     return view('posts.index');
 })->name('posts.index');
 
+Route::get('/user/allposts', function () {
+    return view('user.posts.userindex');
+})->name('user.posts.index');
+
 // Route for the create post page
 Route::get('/posts/createpost', function () {
     return view('posts.createpost');
@@ -47,4 +51,3 @@ Route::get('/posts/editor_quotes', function () {
 Route::get('/posts/live-videos', function () {
     return view('posts.live-videos');
 })->name('posts.live-videos');
-

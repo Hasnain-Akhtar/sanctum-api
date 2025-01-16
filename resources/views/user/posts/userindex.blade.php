@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.layouts.app')
 
 @section('title', 'All Posts')
 
@@ -70,20 +70,16 @@
 <script>
   $(document).ready(function () {
     // Redirect to update page
-    window.updatePost = function(postId) {
-      window.location.href = `/posts/updatepost?id=${postId}`; // Pass postId in URL
-    }
 
     // Redirect to view page
     window.viewPost = function(postId) {
       window.location.href = `/posts/viewpost?id=${postId}`; // Pass postId in URL
     }
 
-
     // Fetch posts and display them
     function fetchPosts() {
       $.ajax({
-        url: '/api/admin/posts',
+        url: '/api/user/posts',
         type: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -231,30 +227,6 @@
   document.getElementById('actualContent').classList.remove('hidden');
 }
 
-
-    // Delete post
-    window.deletePost = function(postId) {
-      if (confirm('Are you sure you want to delete this post?')) {
-        $.ajax({
-          url: `/api/admin/posts/${postId}`,
-          type: 'DELETE',  // Use 'DELETE' method
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`  // Pass token in headers
-          },
-          success: function(response) {
-            if (response.success === true) {
-              alert('Post deleted successfully!');
-              fetchPosts(); // Refresh posts list
-            } else {
-              alert('Error deleting post!');
-            }
-          },
-          error: function() {
-            alert('An error occurred while deleting the post.');
-          }
-        });
-      }
-    }
 
     fetchPosts(); // Fetch posts on page load
   });

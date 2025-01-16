@@ -131,7 +131,7 @@
 
         // Perform an AJAX POST request
         $.ajax({
-          url: '/api/login',
+          url: '/api/admin/login',
           type: 'POST',
           contentType: 'application/json',
           data: JSON.stringify({

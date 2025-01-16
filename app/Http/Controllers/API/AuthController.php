@@ -94,16 +94,16 @@ class AuthController extends Controller
     {
         // Get the authenticated user
         $user = Auth::user();
-
+    
         // Delete the user's token
         $user->tokens()->delete();
-
+    
         // Return a successful response
         return response()->json([
             'status' => true,
-            'message' => 'You have successfully logout',
-            'user' => $user,
+            'message' => 'You have successfully logged out',
         ], 200);
     }
+    
 }
 

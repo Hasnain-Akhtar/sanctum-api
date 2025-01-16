@@ -5,7 +5,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
                 <!-- Main YouTube Video -->
                 <div class="col-span-2">
-                    <iframe class="w-full h-96 rounded-lg shadow-lg" src="https://www.youtube.com/embed/9V1wa4s1oVQ?si=paS2xNRr6Zi6cO3a" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="w-full h-96 rounded-lg shadow-lg" src="https://www.youtube.com/embed/WhYrPMVgqxk?si=B_ck2yTIkRJTSos9" frameborder="0" allowfullscreen></iframe>
                     <div class="flex items-center mt-3">
                         <img src="https://s.gravatar.com/avatar/0cf15665a9146ba8595f04293fb0f98f?s=80" alt="Author Image" class="w-8 h-8 rounded-full mr-4" />
                         <div class="flex-auto">
@@ -24,7 +24,7 @@
                 <!-- Additional Videos -->
                 <div class="col-span-1 flex flex-col gap-4">
                     <div class="rounded-lg shadow-lg overflow-hidden">
-                        <iframe class="w-full h-44" src="https://www.youtube.com/embed/9V1wa4s1oVQ?si=paS2xNRr6Zi6cO3a" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full h-44" src="https://www.youtube.com/embed/WhYrPMVgqxk?si=B_ck2yTIkRJTSos9" frameborder="0" allowfullscreen></iframe>
                         <div class="flex-auto">
                             <p class="text-sm font-semibold text-white mt-2">By <span class="font-normal">John Doe</span></p>
                             <p class="mt-1 max-w-xs text-xs text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="rounded-lg shadow-lg overflow-hidden">
-                        <iframe class="w-full h-44" src="https://www.youtube.com/embed/9V1wa4s1oVQ?si=paS2xNRr6Zi6cO3a" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full h-44" src="https://www.youtube.com/embed/WhYrPMVgqxk?si=B_ck2yTIkRJTSos9" frameborder="0" allowfullscreen></iframe>
                         <div class="flex-auto">
                             <p class="text-sm font-semibold text-white mt-2">By <span class="font-normal">John Doe</span></p>
                             <p class="mt-1 max-w-xs text-xs text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
